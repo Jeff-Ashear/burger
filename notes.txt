@@ -1,0 +1,3 @@
+how to connect the server to heroku:
+-go to the suplimental folder and read the heroku guide.
+-also rewatch ___ at 2:41
