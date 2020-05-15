@@ -30,11 +30,14 @@
 
 
 <script>
-    let devour = false;
 
     $(".devour").on('click', function(e) {
         console.log(this.id);
-        devour = true;   
+        devour = true;
+        /**function(request, response) {
+        burger.update(["burger_name", "devoured"], [request.this.burger_name, request.this.devoured]) */  
+        
+        
     });
 
     $(".eatenOrNot").on('click', function(e) {
