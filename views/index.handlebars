@@ -4,7 +4,7 @@
         <label for="ca">Burger Name:</label>
         <input type="text" id="ca" name="burger_name">
     </div>
-    <button type="submit">Add Burger</button>
+    <button type="submit" id="submitter">Add Burger</button>
 </form>
 
 
@@ -14,7 +14,6 @@
 {{#unless devoured}}
 <h1>burger meat things {{this.burger_name}}</h1>
 <button id={{this.id}} class="devour">Devour</button>
-<button id={{this.id}} class="eatenOrNot">Eaten or Not?</button>
 {{/unless}}
 {{/each}}
 </ul>
@@ -24,6 +23,7 @@
     {{#each burgers}}
     {{#if devoured}}
     <h1>{{this.burger_name}}</h1>
+    <button id={{this.id}} class="undevour">UnDevour</button>
     {{/if}}
     {{/each}}        
 </ul>
@@ -33,10 +33,27 @@
 
     $(".devour").on('click', function(e) {
         console.log(this.id);
-        devour = true;
-        /**function(request, response) {
-        burger.update(["burger_name", "devoured"], [request.this.burger_name, request.this.devoured]) */  
+        //*this.devoured = true;*/
+        $.ajax({
+            type: "put",
+            url:`/api/burger/where/${this.id}/set/devoured/1`
+        }).then((res) => {
+            console.log(res)
+            window.location.href="/";
+        });    
         
+    });
+
+    $(".undevour").on('click', function(e) {
+        console.log(this.id);
+        //*this.devoured = true;*/
+        $.ajax({
+            type: "put",
+            url:`/api/burger/where/${this.id}/set/devoured/0`
+        }).then((res) => {
+            console.log(res)
+            window.location.href="/";
+        });    
         
     });
 

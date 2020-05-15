@@ -11,9 +11,9 @@ var burger = {
             cb(response);
         });
     },
-    update: function(objColVals, condition, cb) {
-        orm.update("burgers", objColVals, condition, function(response) {
-            cb(res); // these are gooda s long as you pass these values fromt he controller
+    update: function(condition, setDevoured, cb) {
+        orm.update(condition, setDevoured,function(response) {
+            cb(response); // these are gooda s long as you pass these values fromt he controller
                         // other wise, our have o contruct here. Readt he read me though. There ar only a couple fields thate ver need to be
                             // be updated, so you don't really needa  variable being passed from the controller. You could just set those cvalues here, sincet he state3 is 
                             // only eaten or not eated. 

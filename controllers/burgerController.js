@@ -20,21 +20,22 @@ router.post("/api/burger", function (request, response) {
     });
 });
 
-router.put("/api/buger/:id", function (request, response) {
+router.put("/api/burger/where/:id/set/devoured/:devouredNumBool", function (request, response) {
     var condition = "id = " + request.params.id;
+    var setDevoured = request.params.devouredNumBool;
 
     console.log("condition: ", condition);
 
     burger.update(
-        {
-            devoured: request.body.devoured
-        },
         condition,
+        setDevoured,
         function (result) {
             if (result.changedRows === 0) {
-                return result.status(404).end();
+                return response.status(404).send({
+                    message: "nothing was updated"
+                });
             } else {
-                result.status(200).end();
+               return response.status(200).json(result);
             }
         }
     );
