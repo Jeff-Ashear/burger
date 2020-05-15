@@ -10,8 +10,21 @@ const orm = {
             callback(results)
         })
     },
-    create: function (table, columns, values, callback) {
-        let query = ""
+    create: function ( table, columns, values, callback) {
+
+        values[1] = parseInt(values[1]);
+
+        values = values.map(el => {
+            if(typeof(el) === "string") {
+                return `"${el}"`;
+            } else {
+                return el;
+            }
+        })
+
+        let query = `INSERT INTO ${table} (${columns}) values (${values})`;
+        
+
         connection.query(query, function (err, results) {
             if (err)
                 throw err;

@@ -2,7 +2,7 @@
 <form class="create-form">
     <div class="form-gorup">
         <label for="ca">Burger Name:</label>
-        <input type="text" id="ca" name="burger_name">
+        <input type="text" id="formValue" name="burger_name" />
     </div>
     <button type="submit" id="submitter">Add Burger</button>
 </form>
@@ -57,8 +57,22 @@
         
     });
 
-    $(".eatenOrNot").on('click', function(e) {
-        console.log("eaten or not: ", devour)
+    $("#submitter").on('click', function(e) {
+        e.preventDefault();
+        console.log("easier than making actual burgers, unless it's not.")
+        newBurger = $("#formValue").val().trim();
+        console.log("new burger: ", newBurger);
+        $.ajax({
+            type: "post",
+            url: `/api/burger`,
+            data: {
+                name: newBurger,
+                devoured: 0
+                }
+        }).then((res) => {
+            console.log(res)
+            window.location.href="/";
+        });
     });
 
     /**let buttons = document.getElementsByClassName("devour")//.addEventListener('click', function(e){

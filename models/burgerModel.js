@@ -7,7 +7,8 @@ var burger = {
         });
     },
     create: function(cols, vals, cb) { // can pass the call back or creat below like 11
-        orm.create("burgers", cols, vals, function(resposne) {
+        
+        orm.create("burgers", cols, vals, function(response) {
             cb(response);
         });
     },
