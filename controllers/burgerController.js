@@ -4,17 +4,18 @@ var router = express.Router();
 const burger = require("../models/burgerModel.js");
 
 router.get("/", function(request, response) {
+   
     burger.all(function(data) {
         var hbsObject = {
-            cats: data
+            burgers: data
         }
-        console.log(hbsOgject);
+        console.log(hbsObject);
         response.render("index", hbsObject);
     });
 });
 
-router.post("/api/cats", function(request, response) {
-    burger.create(["name", "sleepy"], [request.body.name, request.body.eaten], function(result){
+router.post("/api/burger", function(request, response) {
+    burger.create(["burger_name", "devoured"], [request.body.name, request.body.devoured], function(result){
         response.json({ id: result.insertId });
     });
 });
@@ -26,7 +27,7 @@ router.put("/api/buger/:id", function(request, response) {
 
     burger.update(
         {
-            sleepy: request.body.eaten
+            devoured: request.body.eaten
         },
         eaten,
         function(result) {

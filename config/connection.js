@@ -8,12 +8,12 @@ const connection = mysql.createConnection({
     database: "burger_db" /// might wantt o change this too
 });
 
+
 connection.connect(function(err) {
     if (err) {
         console.error("Error, couldn't connect to database: " + err.stack);
         return;
-    }
-    console.log("Connected as id " + connection.threadId);
+    }    console.log("Connected as id " + connection.threadId);
 });
 
 module.exports = connection;

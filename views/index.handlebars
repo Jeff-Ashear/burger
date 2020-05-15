@@ -1,1 +1,31 @@
-<h1>burger meat things</h1>
+<h1>Create a burger</h1>
+<form>
+    {{input burgerName = "burger_name"}}
+</form>
+
+{{#each burgers}}
+<h1>burger meat things {{this.burger_name}}</h1>
+<button id={{this.id}} class="devour">Devour</button>
+<button id={{this.id}} class="eatenOrNot">Eaten or Not?</button>
+{{/each}}
+
+
+
+
+<script>
+    $(".devour").on('click', function(e) {
+        console.log(this.id);
+        if (this.class === "devour" ) {
+            console.log("devour button")
+        } else {
+            console.log("Eaten or not button")
+        }
+    })
+    /**let buttons = document.getElementsByClassName("devour")//.addEventListener('click', function(e){
+    for(let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function(e) {
+            console.log(e.target);
+        })
+    }*/
+
+</script>

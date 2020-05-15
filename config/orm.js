@@ -21,7 +21,7 @@ const orm = {
     },
 
     update: function(table, updateObject, condition, callback) {
-        let query = "" //<------- Construct your query here/ Look at line 6 for exampleo f the query
+        let query = "SELECT * FROM burgers WHERE devoured = true" //<------- Construct your query here/ Look at line 6 for exampleo f the query
         connection.query(query, function(err, result){
             if(err){
                 throw err;
