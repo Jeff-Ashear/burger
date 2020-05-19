@@ -3,6 +3,9 @@ Project incorporating node.js, mySQL, and Handlebars skills.
 
 Relevant links:
 
+Portfolio:
+    https://jeff-ashear.github.io/UpdatedPortfolio/
+
 Heroku:
 
     https://jeffs-bootcamp-burger-app.herokuapp.com/
